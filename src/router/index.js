@@ -18,6 +18,10 @@ const router=createBrowserRouter([
         element:<Main></Main>
       },
       {
+        path:'/main',
+        element:<Main></Main>
+      },
+      {
         path:'/classmanage',
         element:<CalssManage></CalssManage>
       },
