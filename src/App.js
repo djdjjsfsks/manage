@@ -6,7 +6,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, theme } from 'antd';
+import { Affix, Button, Layout, Menu, theme } from 'antd';
 import { Outlet, useNavigate,  } from 'react-router-dom';
 
 const item=[
@@ -68,6 +68,18 @@ const item=[
   }
 ]
 
+const siderStyle = {
+  overflow: 'auto',
+  height: '100vh',
+  position: 'fixed',
+  insetInlineStart: 0,
+  top: 0,
+  bottom: 0,
+  scrollbarWidth: 'thin',
+  scrollbarGutter: 'stable',
+  
+};
+
 
 const { Header, Sider, Content } = Layout;
 const App = () => {
@@ -83,25 +95,78 @@ const App = () => {
     navigate(`/${e.key}`)
   }
 
+  //   <Layout style={{height:'100vh',background: colorBgContainer}}>
+  //     <Sider style={siderStyle} trigger={null} collapsible collapsed={collapsed}>
+  //       <div className="demo-logo-vertical" />
+  //       <Menu
+  //         theme="dark"
+  //         mode="inline"
+  //         defaultSelectedKeys={['main']}
+  //         items={item}
+  //         onClick={(e)=>{handeljump(e)}}
+  //       />
+  //     </Sider>
+  //     <Layout style={{ marginInlineStart: 200, }}>
+  //       <Header
+  //         style={{
+  //           padding: 0,
+  //           background: colorBgContainer,
+  //         }}
+  //       >
+  //         <Button
+  //           type="text"
+  //           icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+  //           onClick={() => setCollapsed(!collapsed)}
+  //           style={{
+  //             fontSize: '16px',
+  //             width: 64,
+  //             height: 64,
+  //           }}
+  //         />
+  //       </Header>
+  //       <Content
+  //         style={{
+  //           margin: '24px 16px',
+  //           padding: 10,
+  //           overflow: 'initial',
+  //           background: colorBgContainer,
+           
+  //         }}
+  //       >
+  //         <div
+  //           style={{
+  //             padding: 24,
+             
+  //             background: colorBgContainer,
+  //             borderRadius: borderRadiusLG,
+  //           }}
+  //         >
+  //           <Outlet></Outlet>
+            
+  //         </div>
+          
+  //       </Content>
+  //     </Layout>
+  //   </Layout>
+  // );
   return (
-    <Layout style={{height:'100vh'}}>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+    <Layout hasSider>
+      <Sider style={siderStyle} trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['main']}
-          items={item}
-          onClick={(e)=>{handeljump(e)}}
-        />
-      </Sider>
-      <Layout>
-        <Header
-          style={{
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['main']} items={item}
+        onClick={(e)=>{handeljump(e)}} />
+      </Sider  >
+      <Layout
+        style={{
+          marginInlineStart: 200,
+        }}
+      >
+        <Header style={{
             padding: 0,
             background: colorBgContainer,
-          }}
-        >
+          }}>
+          
+          
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -115,14 +180,33 @@ const App = () => {
         </Header>
         <Content
           style={{
-            margin: '24px 16px',
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
+            margin: '24px 16px 0',
+            overflow: 'initial',
           }}
         >
-          <Outlet></Outlet>
+          <div
+            style={{
+              padding: 24,
+             
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
+            }}
+          >
+            <Outlet></Outlet>
+            {
+              // indicates very long content
+              Array.from(
+                {
+                  length: 100,
+                },
+                (_, index) => (
+                  <React.Fragment key={index}>
+                   
+                  </React.Fragment>
+                ),
+              )
+            }
+          </div>
         </Content>
       </Layout>
     </Layout>

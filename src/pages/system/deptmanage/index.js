@@ -54,7 +54,7 @@ const DeptManage=()=>{
       
       fetchGet()
 
-    },100)
+    },500)
   },[a])
     
   
