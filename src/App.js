@@ -9,6 +9,7 @@ import {
 import { Affix, Button, Layout, Menu, theme } from 'antd';
 import { Outlet, useNavigate,  } from 'react-router-dom';
 
+
 const item=[
   {
     key: 'main',
@@ -83,7 +84,6 @@ const siderStyle = {
 
 const { Header, Sider, Content } = Layout;
 const App = () => {
-
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -153,7 +153,7 @@ const App = () => {
     <Layout hasSider>
       <Sider style={siderStyle} trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['main']} items={item}
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['main']}  items={item}
         onClick={(e)=>{handeljump(e)}} />
       </Sider  >
       <Layout
