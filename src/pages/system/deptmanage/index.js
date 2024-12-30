@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {store_getDeptList} from '@/store/modules/deptStore'
 
 const DeptManage=()=>{
-  const {deptList}=useSelector(state=>state.dept)
+  const deptList=useSelector(state=>state.dept.deptList)
   const [a,setA]=useState(1)
   const dispatch=useDispatch()
   useEffect(()=>{
@@ -85,7 +85,7 @@ const DeptManage=()=>{
         <Input placeholder="请输入部门名称" value={deptName} onChange={(e)=>EntryChange(e)}></Input>
       </Modal>
 
-     <Table dataSource={deptList} columns={columns}></Table>
+     <Table  pagination={false} dataSource={deptList} columns={columns}></Table>
 
     </div>
   )

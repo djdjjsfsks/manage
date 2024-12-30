@@ -55,3 +55,8 @@ export const updateEmpById=(obj)=>{
     update_time:update_time
   })
 }
+
+//获得所有员工姓名和id
+export const getEmpAll=()=>{
+  return request.get('/emps/findall')
+}

@@ -408,13 +408,13 @@ const EmpManage = () => {
       <Button type="primary" className="button double-button" onClick={() => DelItems()} danger>- 批量删除</Button>
 
 
-      <Table rowSelection={{
+      <Table  pagination={false} rowSelection={{
         type: 'checkbox',
         ...rowSelection,
       }}
         rowKey={record => record.id}
         bordered className="table" dataSource={empList} columns={coulmn} />
-
+      <p></p>
       <Pagination
         total={total}
         showSizeChanger
